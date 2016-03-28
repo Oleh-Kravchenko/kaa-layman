@@ -1,0 +1,11 @@
+diff -ur a/api.c b/api.c
+--- a/api.c	2013-11-05 15:24:07.000000000 +0200
++++ b/api.c	2014-03-29 21:05:38.000000000 +0200
+@@ -4929,6 +4929,7 @@
+ 
+ 	if (!opt_api_listen) {
+ 		applog(LOG_DEBUG, "API not running%s", UNAVAILABLE);
++		free(apisock);
+ 		return;
+ 	}
+ 

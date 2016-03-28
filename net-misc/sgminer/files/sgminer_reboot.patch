@@ -1,0 +1,13 @@
+diff -Nur a/sgminer.c b/sgminer.c
+--- a/sgminer.c
++++ b/sgminer.c
+@@ -7447,7 +7447,8 @@
+         }
+       } else if (cgpu->status == LIFE_SICK && (now.tv_sec - thr->last.tv_sec > WATCHDOG_DEAD_TIME)) {
+         cgpu->status = LIFE_DEAD;
+-        applog(LOG_ERR, "%s: Not responded for more than 10 minutes, declaring DEAD!", dev_str);
++        applog(LOG_ERR, "%s: Not responded for more than 10 minutes, rebooting!", dev_str);
++        system("reboot");
+         cgtime(&thr->sick);
+ 
+         dev_error(cgpu, REASON_DEV_DEAD_IDLE_600);

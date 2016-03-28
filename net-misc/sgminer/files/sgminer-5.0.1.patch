@@ -1,0 +1,73 @@
+diff -urN a/configure.ac b/configure.ac
+--- a/configure.ac
++++ b/configure.ac
+@@ -245,8 +245,7 @@
+ AM_CONDITIONAL([HAVE_WINDOWS], [test x$have_win32 = xtrue])
+ AM_CONDITIONAL([HAVE_x86_64], [test x$have_x86_64 = xtrue])
+ 
+-AC_CONFIG_SUBDIRS([submodules/jansson])
+-JANSSON_LIBS="submodules/jansson/src/.libs/libjansson.a"
++JANSSON_LIBS="-ljansson"
+ 
+ PKG_PROG_PKG_CONFIG()
+ 
+@@ -346,7 +346,7 @@
+ 	prefix=/usr/local
+ fi
+ 
+-AC_DEFINE_UNQUOTED([SGMINER_PREFIX], ["$prefix/bin"], [Path to sgminer install])
++AC_DEFINE_UNQUOTED([SGMINER_PREFIX], ["$prefix/share/sgminer"], [Path to sgminer install])
+ 
+ AC_SUBST(OPENCL_LIBS)
+ AC_SUBST(OPENCL_FLAGS)
+@@ -365,7 +364,6 @@
+ 
+ AC_CONFIG_FILES([
+ 	Makefile
+-	submodules/Makefile
+ 	ccan/Makefile
+ 	lib/Makefile
+ 	sph/Makefile
+diff -urN a/Makefile.am b/Makefile.am
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -1,18 +1,16 @@
+ 
+ ACLOCAL_AMFLAGS = -I m4
+ 
+-JANSSON_CPPFLAGS= -I$(top_builddir)/submodules/jansson/src -I$(top_srcdir)/submodules/jansson/src
+-
+ EXTRA_DIST	= example.conf m4/gnulib-cache.m4 \
+ 		  ADL_SDK/readme.txt api-example.php miner.php	\
+ 		  API.class API.java api-example.c hexdump.c \
+ 		  doc/API doc/FAQ doc/GPU doc/SCRYPT doc/windows-build.txt
+ 
+-SUBDIRS		= lib submodules ccan sph
++SUBDIRS		= lib ccan sph
+ 
+ bin_PROGRAMS     = sgminer
+ 
+-sgminer_CPPFLAGS = $(PTHREAD_FLAGS) -fno-strict-aliasing $(JANSSON_CPPFLAGS)
++sgminer_CPPFLAGS = $(PTHREAD_FLAGS) -fno-strict-aliasing
+ sgminer_LDFLAGS  = $(PTHREAD_FLAGS)
+ sgminer_LDADD    = $(DLOPEN_FLAGS) @LIBCURL_LIBS@ @JANSSON_LIBS@ @PTHREAD_LIBS@ \
+ 		  @OPENCL_LIBS@ @NCURSES_LIBS@ @PDCURSES_LIBS@ @WS2_LIBS@ \
+@@ -66,5 +66,5 @@
+ sgminer_SOURCES += algorithm/x14.c algorithm/x14.h
+ sgminer_SOURCES += algorithm/fresh.c algorithm/fresh.h
+ 
+-bin_SCRIPTS	= $(top_srcdir)/kernel/*.cl
++pkgdata_DATA	= $(top_srcdir)/kernel/*.cl
+ 
+diff -urN a/sgminer.c b/sgminer.c
+--- a/sgminer.c
++++ b/sgminer.c
+@@ -8275,7 +8275,7 @@
+   /* sgminer_path is current dir */
+   sgminer_path = (char *)alloca(PATH_MAX);
+ #ifndef _MSC_VER
+-  s = strdup(argv[0]);
++  char *s = strdup(argv[0]);
+   strcpy(sgminer_path, dirname(s));
+   free(s);
+ #else
