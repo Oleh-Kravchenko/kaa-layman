@@ -9,7 +9,7 @@ EGIT_REPO_URI="https://github.com/Genoil/cpp-ethereum.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="cuda"
+IUSE="cuda opencl"
 
 RDEPEND="cuda? ( dev-util/nvidia-cuda-toolkit )
 	>=dev-cpp/libjson-rpc-cpp-0.4[http-server,http-client,stubgen]
@@ -28,6 +28,7 @@ DEPEND="dev-libs/gmp
 src_configure() {
 	local mycmakeargs=(
 		-DBUNDLE="$(usex cuda cudaminer miner)"
+		-DETHASHCL="$(usex opencl ON OFF)"
 	)
 
 	cmake-utils_src_configure
