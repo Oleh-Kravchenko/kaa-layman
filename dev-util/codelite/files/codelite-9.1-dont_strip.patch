@@ -1,0 +1,12 @@
+diff -Nur a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2016-01-30 12:49:18.000000000 +0200
++++ b/CMakeLists.txt	2016-07-08 14:36:28.291948447 +0300
+@@ -294,7 +294,7 @@
+ else ()
+     message("-- Building in Release mode")
+     set ( DEBUG_BUILD 0 )
+-    set(CMAKE_INSTALL_DO_STRIP TRUE)
++    set(CMAKE_INSTALL_DO_STRIP FALSE)
+     message("-- CMAKE_INSTALL_DO_STRIP is " ${CMAKE_INSTALL_DO_STRIP})
+     if(UNIX AND NOT APPLE)
+         ## Avoid hardening-no-relro wrarning messages from lintian
