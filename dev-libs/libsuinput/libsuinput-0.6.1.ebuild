@@ -1,6 +1,6 @@
 EAPI=6
 
-inherit autotools linux-info
+inherit autotools linux-info udev user
 
 DESCRIPTION="Thin userspace library on top of Linux uinput kernel module"
 HOMEPAGE="http://tjjr.fi/sw/libsuinput/"
@@ -12,8 +12,8 @@ KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
 DEPEND="sys-apps/attr
-	sys-fs/udev
-	sys-libs/libcap"
+	sys-libs/libcap
+	virtual/udev"
 RDEPEND="${DEPEND}"
 
 src_prepare() {
@@ -25,10 +25,17 @@ src_configure() {
 	econf $(use_enable static-libs static)
 }
 
+src_install() {
+	insinto $(get_udevdir)/rules.d
+	doins "${FILESDIR}"/99-uinput.rules || die
+	default
+}
+
 pkg_setup() {
 	CONFIG_CHECK="~INPUT_UINPUT"
 	local WARNING_INPUT_UINPUT="User level driver support have not been \
 	configured in your kernel.  ${PN} will not work unless INPUT_UINPUT is set."
-
 	check_extra_config
+
+	enewgroup uinput
 }
