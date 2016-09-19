@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<name>Oleh Kravchenko</name>
-	<email>oleg@kaa.org.ua</email>
-</maintainer>
-<use>
-	<flag name="cmake">install cmake modules to locate dyncall</flag>
-</use>
+	<maintainer>
+		<email>oleg@kaa.org.ua</email>
+		<name>Oleh Kravchenko</name>
+	</maintainer>
+	<use>
+		<flag name="cmake">install cmake modules to locate dyncall</flag>
+	</use>
 </pkgmetadata>
