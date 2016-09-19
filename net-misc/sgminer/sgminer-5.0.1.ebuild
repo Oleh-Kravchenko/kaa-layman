@@ -1,6 +1,6 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -13,11 +13,11 @@ SRC_URI="https://github.com/sgminer-dev/${PN}/archive/${PV}.tar.gz -> ${P}.tar.g
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~x86 ~amd64"
-IUSE="adl +curl +curses reboot"
+IUSE="adl +curl +ncurses reboot"
 
 DEPEND="adl? ( x11-libs/amd-adl-sdk )
 	curl? ( net-misc/curl )
-	curses? ( sys-libs/ncurses )
+	ncurses? ( sys-libs/ncurses:* )
 	>=dev-libs/jansson-2.6"
 RDEPEND="${DEPEND}"
 
@@ -38,6 +38,6 @@ src_configure() {
 	econf \
 		$(use_enable adl) \
 		$(use_enable curl libcurl) \
-		$(use_with curses) \
+		$(use_with ncurses curses) \
 		--enable-shared
 }
