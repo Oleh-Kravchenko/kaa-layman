@@ -1,6 +1,7 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
+
 EAPI=4
 
 inherit eutils subversion autotools
@@ -20,8 +21,7 @@ DEPEND="${RDEPEND}"
 AT_NOEAUTOMAKE=yes
 
 src_prepare() {
-	cd ${S}
-	epatch ${FILESDIR}/chan_dongle.patch
+	epatch "${FILESDIR}/chan_dongle.patch"
 	eaclocal
 	eautoconf
 	automake -a
