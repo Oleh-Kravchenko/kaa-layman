@@ -1,6 +1,6 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=4
 
@@ -15,13 +15,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND="sys-libs/pam
+DEPEND="virtual/pam
 	sys-fs/encfs"
 RDEPEND="${DEPEND}"
 
-src_unpack() {
-	unpack ${A}
-	cd ${S}
+src_prepare() {
 	sed -i -e "s:/lib/:/$(get_libdir)/:" \
 		-e "s:gcc:$(tc-getCC):" \
 		-e "s:ld:$(tc-getLD):" Makefile || die "sed failed in Makefile"
