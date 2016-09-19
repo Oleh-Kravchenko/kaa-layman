@@ -1,6 +1,6 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -9,7 +9,7 @@ inherit eutils multilib unpacker
 DESCRIPTION="GPU stress-testing tool from the developers of Heaven Benchmark"
 HOMEPAGE="http://unigine.com/products/valley/"
 SRC_URI="Unigine_Valley-${PV}.run"
-LICENSE="valley-benchmark.pdf"
+LICENSE="freedist"
 
 SLOT="0"
 KEYWORDS="-* ~amd64 ~x86"
