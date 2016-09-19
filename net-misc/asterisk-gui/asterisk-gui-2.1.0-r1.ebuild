@@ -1,6 +1,6 @@
-# Copyright 1999-2011 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: Author: mva $
+# $Id$
 
 EAPI=4
 
@@ -29,5 +29,5 @@ src_install() {
 	newins providers.conf.sample providers.conf
 
 	dodoc README CREDITS requests.txt security.txt other/sqlite.js
-        fowners -R asterisk:asterisk /var/lib/asterisk/static-http/config
+	fowners -R asterisk:asterisk /var/lib/asterisk/static-http/config
 }
