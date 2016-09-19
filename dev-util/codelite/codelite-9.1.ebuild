@@ -1,3 +1,7 @@
+# Copyright 1999-2016 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Id$
+
 EAPI=6
 WX_GTK_VER=3.0
 
@@ -12,15 +16,15 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="clang flex lldb mysql pch sftp"
 
-DEPEND="app-text/hunspell
+RDEPEND="app-text/hunspell
 	clang? ( sys-devel/llvm[clang] )
 	dev-db/sqlite:3
-	flex? ( sys-devel/flex )
 	mysql? ( virtual/libmysqlclient )
 	lldb? ( sys-devel/llvm[lldb] )
 	sftp? ( net-libs/libssh )
 	x11-libs/wxGTK:${WX_GTK_VER}[X]"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	flex? ( sys-devel/flex )"
 
 PATCHES=("${FILESDIR}/${P}-dont_strip.patch")
 

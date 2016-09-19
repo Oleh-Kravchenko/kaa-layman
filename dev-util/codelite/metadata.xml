@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<name>Oleh Kravchenko</name>
-	<email>oleg@kaa.org.ua</email>
-</maintainer>
-<use>
-	<flag name="clang">Build with clang code completion support</flag>
-	<flag name="flex">Add support for flex</flag>
-	<flag name="lldb">Add support for lldb</flag>
-	<flag name="sftp">Add support for sftp</flag>
-</use>
+	<maintainer>
+		<email>oleg@kaa.org.ua</email>
+		<name>Oleh Kravchenko</name>
+	</maintainer>
+	<use>
+		<flag name="clang">Build with clang code completion support</flag>
+		<flag name="flex">Add support for flex</flag>
+		<flag name="lldb">Add support for lldb</flag>
+		<flag name="sftp">Add support for sftp</flag>
+	</use>
 </pkgmetadata>
