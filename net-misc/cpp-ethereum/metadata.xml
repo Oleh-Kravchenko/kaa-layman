@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<name>Oleh Kravchenko</name>
-	<email>oleg@kaa.org.ua</email>
-</maintainer>
-<use>
-	<flag name="cuda">Enable CUDA support</flag>
-	<flag name="opencl">Enable OpenCL support</flag>
-</use>
+	<maintainer>
+		<email>oleg@kaa.org.ua</email>
+		<name>Oleh Kravchenko</name>
+	</maintainer>
+	<use>
+		<flag name="cuda">Enable CUDA support</flag>
+		<flag name="opencl">Enable OpenCL support</flag>
+	</use>
 </pkgmetadata>
