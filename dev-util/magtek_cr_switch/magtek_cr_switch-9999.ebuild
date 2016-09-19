@@ -1,23 +1,19 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
-EAPI=2
+EAPI=6
 
-inherit cmake-utils
+inherit cmake-utils git-r3
 
 DESCRIPTION="Mag-Tek Mini Swipe Reader mode switch tool"
 HOMEPAGE="http://www.kaa.org.ua/programmi/magtek-card-reader-switch.html"
-SRC_URI="http://www.kaa.org.ua/distfiles/magtek_cr_switch-${PV}.tar.bz2"
-LICENSE="GPL-2"
+EGIT_REPO_URI="https://github.com/Oleh-Kravchenko/magtek_cr_switch.git"
 
+LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="virtual/libusb:1"
 RDEPEND="${DEPEND}"
-
-src_compile() {
-	cmake-utils_src_configure
-}
