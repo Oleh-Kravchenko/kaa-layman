@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -11,7 +11,7 @@ DESCRIPTION="Very simple qt4 graphics benchmark based on David Reveman cairogear
 HOMEPAGE="http://zrusin.blogspot.com/2008/08/fast-graphics.html"
 SRC_URI="http://www.phoronix-test-suite.com/benchmark-files/${MY_P}.tar.bz2"
 
-LICENSE=""
+LICENSE="freedist"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
