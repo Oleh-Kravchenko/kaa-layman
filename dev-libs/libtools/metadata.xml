@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
-	<name>Oleh Kravchenko</name>
-	<email>oleg@kaa.org.ua</email>
-</maintainer>
-<use>
-	<flag name="mysql">Enable MySQL functions</flag>
-	<flag name="uri">Enable URI parsing functions</flag>
-</use>
+	<maintainer>
+		<email>oleg@kaa.org.ua</email>
+		<name>Oleh Kravchenko</name>
+	</maintainer>
+	<use>
+		<flag name="mysql">Enable MySQL functions</flag>
+		<flag name="uri">Enable URI parsing functions</flag>
+	</use>
 </pkgmetadata>
