@@ -18,7 +18,7 @@ IUSE="doc nls test"
 
 RDEPEND="app-arch/bzip2
 	app-arch/dpkg
-	app-arch/lz4
+	>=app-arch/lz4-0_p131
 	app-arch/xz-utils
 	net-misc/curl
 	sys-libs/db:=
