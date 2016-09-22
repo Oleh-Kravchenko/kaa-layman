@@ -5,12 +5,11 @@
 EAPI=6
 
 CMAKE_MIN_VERSION=3.4
-inherit cmake-utils git-r3
+inherit cmake-utils
 
-DESCRIPTION="Set of tools for managing Debian packages"
+DESCRIPTION="Advanced front-end for dpkg"
 HOMEPAGE="https://wiki.debian.org/Apt"
-EGIT_COMMIT="${PV}"
-EGIT_REPO_URI="https://anonscm.debian.org/git/apt/apt.git"
+SRC_URI="http://http.debian.net/debian/pool/main/a/${PN}/${PN}_${PV}.tar.xz"
 
 LICENSE="GPL-2+"
 SLOT="0"
