@@ -24,6 +24,7 @@ RDEPEND="app-arch/bzip2
 	sys-libs/db:=
 	sys-libs/zlib"
 DEPEND="${RDEPEND}
+	app-text/docbook-xml-dtd:4.5
 	test? ( dev-cpp/gtest )
 	doc? (
 		app-doc/doxygen
@@ -32,6 +33,12 @@ DEPEND="${RDEPEND}
 	nls? ( virtual/libintl )
 	virtual/libiconv
 	virtual/pkgconfig"
+
+src_prepare() {
+	epatch "${FILESDIR}"/${P}_sbin.patch
+
+	default
+}
 
 src_configure() {
 	local mycmakeargs=(

@@ -1,0 +1,17 @@
+--- a/cmdline/CMakeLists.txt	2016-09-22 18:13:36.116042182 +0300
++++ b/cmdline/CMakeLists.txt	2016-09-22 18:16:20.456271716 +0300
+@@ -47,7 +47,7 @@
+ # Install the executables
+ install(TARGETS apt apt-cache apt-get apt-config apt-cdrom apt-mark apt-sortpkgs
+                 apt-extracttemplates
+-        RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
++        RUNTIME DESTINATION ${CMAKE_INSTALL_SBINDIR})
+ 
+ install(TARGETS apt-helper RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/apt/)
+ install(TARGETS apt-dump-solver apt-internal-solver RUNTIME DESTINATION ${CMAKE_INSTALL_LIBEXECDIR}/apt/solvers)
+@@ -56,4 +56,4 @@
+ add_slaves(${CMAKE_INSTALL_LIBEXECDIR}/apt/planners ../solvers/dump planners/dump)
+ 
+ # Install the not-to-be-compiled programs
+-INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/apt-key DESTINATION ${CMAKE_INSTALL_BINDIR})
++INSTALL(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/apt-key DESTINATION ${CMAKE_INSTALL_SBINDIR})
