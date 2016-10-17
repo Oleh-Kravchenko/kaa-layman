@@ -13,8 +13,8 @@ EGIT_REPO_URI="https://github.com/Oleh-Kravchenko/liblog.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE=""
+IUSE="doc"
 
 RDEPEND="dev-libs/libtools[uri]"
 DEPEND="${RDEPEND}
-	app-doc/doxygen"
+	doc? ( app-doc/doxygen )"
