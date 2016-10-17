@@ -13,16 +13,17 @@ EGIT_REPO_URI="https://github.com/Oleh-Kravchenko/libtools.git"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="mysql uri"
+IUSE="doc mysql uri"
 
 RDEPEND="dev-libs/openssl:*
 	mysql? ( virtual/libmysqlclient )
 	uri? ( dev-libs/uriparser )"
 DEPEND="${RDEPEND}
-	app-doc/doxygen"
+	doc? ( app-doc/doxygen )"
 
 src_configure() {
 	local mycmakeargs=(
+		-DWITH_DOC="$(usex doc ON OFF)"
 		-DWITH_MYSQL="$(usex mysql ON OFF)"
 		-DWITH_URIPARSER="$(usex uri ON OFF)"
 	)
