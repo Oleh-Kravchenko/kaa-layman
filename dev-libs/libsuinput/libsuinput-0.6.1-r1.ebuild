@@ -43,3 +43,7 @@ pkg_setup() {
 
 	enewgroup uinput
 }
+
+pkg_postinst() {
+	udev_reload
+}
