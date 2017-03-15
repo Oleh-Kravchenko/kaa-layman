@@ -30,9 +30,10 @@ src_configure() {
 }
 
 src_install() {
+	default
 	insinto $(get_udevdir)/rules.d
 	doins "${FILESDIR}"/99-uinput.rules || die
-	default
+	use static-libs || rm -f "${ED}/usr/$(get_libdir)/${PN}.la"
 }
 
 pkg_setup() {
