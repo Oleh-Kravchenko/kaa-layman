@@ -1,11 +1,10 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 PYTHON_COMPAT=( python2_7 )
 
-inherit distutils
+inherit distutils-r1
 
 DESCRIPTION="Trac client command-line tools"
 HOMEPAGE="https://tamentis.com/projects/cartman/"
@@ -16,6 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
 
-RDEPEND=">=dev-python/requests-1.2"
+RDEPEND=">=dev-python/requests-1.2[${PYTHON_USEDEP}]"
 DEPEND="${RDEPEND}
-	dev-python/setuptools"
+	>=dev-python/nose-1.0[${PYTHON_USEDEP}]
+	dev-python/setuptools[${PYTHON_USEDEP}]"

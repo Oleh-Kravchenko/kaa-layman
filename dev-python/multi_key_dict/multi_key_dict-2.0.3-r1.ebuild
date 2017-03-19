@@ -1,10 +1,10 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=5
-PYTHON_COMPAT=( python2_7 )
+EAPI=6
+PYTHON_COMPAT=( python{2_7,3_4,3_5} )
 
-inherit distutils
+inherit distutils-r1
 
 DESCRIPTION="Multi key dictionary implementation"
 HOMEPAGE="https://github.com/formiaczek/multi_key_dict"
@@ -17,4 +17,4 @@ IUSE=""
 
 RDEPEND=""
 DEPEND="${RDEPEND}
-	dev-python/setuptools"
+	dev-python/setuptools[${PYTHON_USEDEP}]"
