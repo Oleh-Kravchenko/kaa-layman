@@ -18,7 +18,7 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-	epatch "${FILESDIR}/fix_cflags.patch"
+	eapply "${FILESDIR}/fix_cflags.patch"
 	default
 }
 
