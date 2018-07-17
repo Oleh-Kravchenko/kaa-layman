@@ -1,8 +1,7 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
+EAPI=6
 
 inherit eutils
 
@@ -11,10 +10,10 @@ HOMEPAGE="http://code.google.com/p/git-repo/"
 
 LICENSE="Apache-2.0"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64 ~arm ~x86"
 IUSE=""
 
-RDEPEND="dev-vcs/git dev-lang/python"
+RDEPEND="dev-vcs/git dev-lang/python:2.7"
 
 src_unpack() {
 	mkdir -p "${S}" || die
@@ -24,4 +23,7 @@ src_unpack() {
 src_install() {
 	exeinto /opt/bin
 	doexe "${PN}" || die
+
+	# for compatibility with Jenkins CI
+	dosym ../../opt/bin/repo usr/bin/repo
 }
