@@ -1,13 +1,14 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
 
-inherit autotools git-r3
+inherit autotools eutils git-r3
 
 DESCRIPTION="High quality television application for use with video capture cards"
 HOMEPAGE="https://git.linuxtv.org/tvtime.git/about/"
 EGIT_REPO_URI="https://git.linuxtv.org/cgit.cgi/tvtime.git"
+EGIT_COMMIT="v${PV}"
 
 SLOT="0"
 LICENSE="GPL-2"
@@ -17,9 +18,12 @@ IUSE="nls static xinerama"
 RDEPEND=""
 DEPEND=""
 
+PATCHES=("${FILESDIR}/${P}-major-minor.patch")
+
 src_prepare() {
+	eapply ${PATCHES[@]}
+	eapply_user
 	eautoreconf
-	default
 }
 
 src_configure() {
