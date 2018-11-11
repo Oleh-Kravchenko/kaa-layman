@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
-inherit eutils
+inherit bash-completion-r1 eutils
 
 DESCRIPTION="Static Code Analyzer for C, C++ and C#"
 HOMEPAGE="http://www.viva64.com/en/pvs-studio/"
@@ -13,7 +12,7 @@ SRC_URI="http://files.viva64.com/${P}-x86_64.tgz"
 LICENSE="free-noncomm"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE=""
+IUSE="bash-completion"
 
 # Binary prebuilt package
 QA_PRESTRIPPED="
@@ -27,4 +26,9 @@ S="${WORKDIR}/${P}-x86_64"
 src_install() {
 	dobin bin/plog-converter bin/pvs-studio bin/pvs-studio-analyzer
 	dodoc README.md
+
+	if use bash-completion; then
+		newbashcomp etc/bash_completion.d/${PN}.sh plog-converter
+		bashcomp_alias plog-converter pvs-studio-analyzer
+	fi
 }
