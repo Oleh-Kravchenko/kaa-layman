@@ -7,7 +7,7 @@ inherit autotools eutils git-r3
 
 DESCRIPTION="High quality television application for use with video capture cards"
 HOMEPAGE="https://git.linuxtv.org/tvtime.git/about/"
-EGIT_REPO_URI="https://git.linuxtv.org/cgit.cgi/tvtime.git"
+EGIT_REPO_URI="https://git.linuxtv.org/tvtime.git"
 EGIT_COMMIT="v${PV}"
 
 SLOT="0"
