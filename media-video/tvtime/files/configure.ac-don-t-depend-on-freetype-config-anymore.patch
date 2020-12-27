@@ -1,0 +1,58 @@
+From 7243b228b3b5ec4ae12b2ddbb61990125e9ce0aa Mon Sep 17 00:00:00 2001
+From: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Date: Mon, 12 Aug 2019 07:57:34 -0300
+Subject: [PATCH] configure.ac: don't depend on freetype-config anymore
+
+This small script doesn't exist on some distros, like Debian
+buster. Also, just calling pkg-config directly is a lot cleaner.
+
+Signed-off-by: Mauro Carvalho Chehab <mchehab+samsung@kernel.org>
+Signed-off-by: Oleh Kravchenko <oleg@kaa.org.ua>
+---
+ configure.ac    | 2 +-
+ src/Makefile.am | 7 ++-----
+ 2 files changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index b0d8fdf..abec3f2 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -71,7 +71,7 @@ dnl ---------------------------------------------
+ dnl freetype
+ dnl ---------------------------------------------
+ dnl Test for freetype
+-AC_PATH_PROG(FREETYPE_CONFIG, freetype-config, no)
++PKG_CHECK_MODULES(FREETYPE, "freetype2")
+ if test "$FREETYPE_CONFIG" = "no" ; then
+   AC_MSG_ERROR(freetype2 needed and freetype-config not found)
+ fi
+diff --git a/src/Makefile.am b/src/Makefile.am
+index 869ebf3..2d5e284 100644
+--- a/src/Makefile.am
++++ b/src/Makefile.am
+@@ -19,9 +19,6 @@ pkgsysconfdir = $(sysconfdir)/@PACKAGE@
+ tmpdir = /tmp
+ localedir = $(datadir)/locale
+ 
+-TTF_CFLAGS = `$(FREETYPE_CONFIG) --cflags`
+-TTF_LIBS = `$(FREETYPE_CONFIG) --libs`
+-
+ # Set the following if you want to specify an additional font directory
+ # FONT_CFLAGS = -DFONTDIR='/usr/share/fonts/truetype/freefont/'
+ 
+@@ -80,10 +77,10 @@ OUTPUT_SRCS = xfullscreen.h xfullscreen.c outputapi.h xvoutput.h xvoutput.c \
+ bin_PROGRAMS = tvtime tvtime-command tvtime-configure tvtime-scanner
+ 
+ tvtime_SOURCES = $(COMMON_SRCS) $(OUTPUT_SRCS) $(PLUGIN_SRCS) tvtime.c
+-tvtime_CFLAGS = $(TTF_CFLAGS) $(PNG_CFLAGS) $(OPT_CFLAGS) \
++tvtime_CFLAGS = $(FREETYPE_CFLAGS) $(PNG_CFLAGS) $(OPT_CFLAGS) \
+ 	$(PLUGIN_CFLAGS) $(X11_CFLAGS) $(XML2_FLAG) $(ALSA_CFLAGS) \
+ 	$(FONT_CFLAGS) $(AM_CFLAGS)
+-tvtime_LDFLAGS  = $(TTF_LIBS) $(ZLIB_LIBS) $(PNG_LIBS) \
++tvtime_LDFLAGS  = $(FREETYPE_LIBS) $(ZLIB_LIBS) $(PNG_LIBS) \
+ 	$(X11_LIBS) $(XML2_LIBS) $(ALSA_LIBS) -lm
+ 
+ tvtime_command_SOURCES = utils.h utils.c tvtimeconf.h tvtimeconf.c \
+-- 
+2.26.2
+

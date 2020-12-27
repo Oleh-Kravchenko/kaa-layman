@@ -18,7 +18,10 @@ IUSE="nls static xinerama"
 RDEPEND=""
 DEPEND=""
 
-PATCHES=("${FILESDIR}/${P}-major-minor.patch")
+PATCHES=(
+	"${FILESDIR}/${P}-major-minor.patch"
+	"${FILESDIR}/configure.ac-don-t-depend-on-freetype-config-anymore.patch"
+)
 
 src_prepare() {
 	eapply ${PATCHES[@]}
