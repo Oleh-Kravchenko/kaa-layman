@@ -15,13 +15,22 @@ LICENSE="GPL-2"
 KEYWORDS="~amd64-linux ~arm-linux ~x86-linux"
 IUSE="nls static xinerama"
 
-RDEPEND=""
-DEPEND=""
+RDEPEND="dev-libs/icu
+	dev-libs/libxml2
+	media-libs/alsa-lib
+	media-libs/freetype
+	media-libs/libpng
+	sys-libs/zlib
+	x11-libs/libICE
+	x11-libs/libXScrnSaver
+	x11-libs/libXext
+	x11-libs/libXv
+	x11-libs/libXxf86vm
+	xinerama? ( x11-libs/libXinerama )"
+DEPEND="${RDEPEND}"
 
-PATCHES=(
-	"${FILESDIR}/${P}-major-minor.patch"
-	"${FILESDIR}/configure.ac-don-t-depend-on-freetype-config-anymore.patch"
-)
+PATCHES=("${FILESDIR}/${P}-major-minor.patch"
+	"${FILESDIR}/configure.ac-don-t-depend-on-freetype-config-anymore.patch")
 
 src_prepare() {
 	eapply ${PATCHES[@]}
