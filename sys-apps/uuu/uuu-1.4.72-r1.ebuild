@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit cmake-utils
+inherit bash-completion-r1 cmake
 
 DESCRIPTION="Freescale/NXP I.MX Chip image deploy tools"
 HOMEPAGE="https://github.com/NXPmicro/mfgtools"
@@ -23,5 +23,11 @@ RDEPEND="${DEPEND}"
 src_prepare() {
 	rm -rf bzip2 libusb zlib
 
-	cmake-utils_src_prepare
+	cmake_src_prepare
+}
+
+src_install() {
+	cmake_src_install
+
+	dobashcomp "${FILESDIR}"/uuu
 }
