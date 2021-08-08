@@ -14,11 +14,12 @@ SLOT="0"
 KEYWORDS="~arm ~arm64 ~amd64 ~x86"
 IUSE=""
 
-DEPEND="app-arch/bzip2
+RDEPEND="app-arch/bzip2
 	>=dev-libs/libusb-1.0.16
 	dev-libs/openssl
 	sys-libs/zlib"
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/libzip"
 
 src_prepare() {
 	rm -rf bzip2 libusb zlib
