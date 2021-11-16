@@ -6,8 +6,8 @@ EAPI=6
 inherit git-r3
 
 DESCRIPTION="Userspace tools for MMC/SD devices"
-HOMEPAGE="https://git.kernel.org/pub/scm/linux/kernel/git/cjb/mmc-utils.git"
-EGIT_REPO_URI="https://git.kernel.org/pub/scm/linux/kernel/git/cjb/mmc-utils.git"
+HOMEPAGE="https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git/"
+EGIT_REPO_URI="https://git.kernel.org/pub/scm/utils/mmc/mmc-utils.git"
 
 LICENSE="GPL-2"
 SLOT="0"
@@ -19,6 +19,7 @@ RDEPEND="${DEPEND}"
 
 src_prepare() {
 	eapply "${FILESDIR}/fix_cflags.patch"
+	eapply "${FILESDIR}/fix_strncpy.patch"
 	default
 }
 

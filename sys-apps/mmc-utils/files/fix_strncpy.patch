@@ -1,0 +1,15 @@
+diff --git a/mmc_cmds.c b/mmc_cmds.c
+index 73bd32a..016fe70 100644
+--- a/mmc_cmds.c
++++ b/mmc_cmds.c
+@@ -1834,8 +1834,8 @@ int do_read_extcsd(int nargs, char **argv)
+ 	}
+ 
+ 	if (ext_csd_rev >= 7) {
+-                memset(lbuf, 0, sizeof(lbuf));
+-		strncpy(lbuf, (char*)&ext_csd[EXT_CSD_FIRMWARE_VERSION], 8);
++		strncpy(lbuf, (char*)&ext_csd[EXT_CSD_FIRMWARE_VERSION], sizeof(lbuf) - 1);
++		lbuf[sizeof(lbuf) - 1] = 0;
+ 		printf("eMMC Firmware Version: %s\n", lbuf);
+ 		printf("eMMC Life Time Estimation A [EXT_CSD_DEVICE_LIFE_TIME_EST_TYP_A]: 0x%02x\n",
+ 			ext_csd[EXT_CSD_DEVICE_LIFE_TIME_EST_TYP_A]);
