@@ -15,7 +15,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="doc mysql uri"
 
 RDEPEND="dev-libs/openssl:*
-	mysql? ( virtual/libmysqlclient )
+	mysql? ( dev-db/mysql-connector-c )
 	uri? ( dev-libs/uriparser )"
 DEPEND="${RDEPEND}
 	doc? ( app-doc/doxygen )"
