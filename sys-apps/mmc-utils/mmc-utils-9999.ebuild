@@ -17,12 +17,6 @@ IUSE=""
 DEPEND=""
 RDEPEND="${DEPEND}"
 
-src_prepare() {
-	eapply "${FILESDIR}/fix_cflags.patch"
-	eapply "${FILESDIR}/fix_strncpy.patch"
-	default
-}
-
 src_install() {
 	doman man/mmc.1
 	emake prefix="${D}/usr" install
