@@ -1,9 +1,9 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-inherit cmake-utils git-r3
+inherit cmake git-r3
 
 DESCRIPTION="Library with a lot of useful C routines"
 HOMEPAGE="https://github.com/Oleh-Kravchenko/libtools"
@@ -27,5 +27,5 @@ src_configure() {
 		-DWITH_URIPARSER="$(usex uri ON OFF)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }

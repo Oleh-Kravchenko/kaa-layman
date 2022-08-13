@@ -1,14 +1,14 @@
 # Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-CMAKE_MIN_VERSION=3.4
-inherit cmake-utils
+inherit cmake
 
 DESCRIPTION="Advanced front-end for dpkg"
 HOMEPAGE="https://wiki.debian.org/Apt"
 SRC_URI="http://http.debian.net/debian/pool/main/a/${PN}/${PN}_${PV}.tar.xz"
+BDEPEND=">=dev-util/cmake-3.4"
 
 LICENSE="GPL-2+"
 SLOT="0"
@@ -45,5 +45,5 @@ src_configure() {
 		-DUSE_NLS="$(usex nls)"
 	)
 
-	cmake-utils_src_configure
+	cmake_src_configure
 }
