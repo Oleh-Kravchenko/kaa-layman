@@ -16,5 +16,3 @@ IUSE=""
 
 DEPEND="net-print/cups"
 RDEPEND="${DEPEND}"
-
--Wno-error=deprecated-declarations
